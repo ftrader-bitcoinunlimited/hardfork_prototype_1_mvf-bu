@@ -565,7 +565,8 @@ boost::filesystem::path GetConfigFile()
 }
 
 void ReadConfigFile(map<string, string>& mapSettingsRet,
-                    map<string, vector<string> >& mapMultiSettingsRet)
+                    map<string, vector<string> >& mapMultiSettingsRet,
+                    CTweakMap *pTweaks)
 {
     boost::filesystem::ifstream streamConfig(GetConfigFile());
     if (!streamConfig.good())
@@ -573,7 +574,7 @@ void ReadConfigFile(map<string, string>& mapSettingsRet,
 
     set<string> setOptions;
     setOptions.insert("*");
-    AllowedArgs::ConfigFile allowedArgs;
+    AllowedArgs::ConfigFile allowedArgs(pTweaks);
 
     for (boost::program_options::detail::config_file_iterator it(streamConfig, setOptions), end; it != end; ++it)
     {

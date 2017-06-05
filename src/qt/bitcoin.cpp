@@ -736,7 +736,7 @@ int main(int argc, char *argv[])
         return EXIT_FAILURE;
     }
     try {
-        ReadConfigFile(mapArgs, mapMultiArgs);
+        ReadConfigFile(mapArgs, mapMultiArgs, &tweaks);
     } catch (const std::exception& e) {
         QMessageBox::critical(0, QObject::tr("Bitcoin MVF-BU"),  // MVF-BU client name change (MVHF-BU-SW-REQ-11-1 / MVHF-BU-DES-IDME-2)
         // MVF-BU TODO: use merged PACKAGE_NAME code below rather than hardcoded as above
